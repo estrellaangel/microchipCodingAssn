@@ -1,0 +1,241 @@
+html{
+    width: 100%;
+    height: 100%;
+}
+
+*, *::after, *::before{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #2E1C23;
+    font-family: 'Shippori Mincho B1', serif;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    cursor: default;
+    overflow: wrap;
+}
+
+.boxForShadow{
+    width: 92%;
+    height: 92%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+/* CONTENT AND TITLE */
+.title{
+    color: #F9F5E3;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-size: xx-large;
+}
+
+
+.main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: #F9F5E3;
+    height: 85%;
+    font-size: 1.25vw;
+}
+
+/* BUTTONS AT BOTTOM */
+.navBtns{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.singleNavBtn{
+    margin-top: 1rem;
+    padding: 10px;
+    background-color: #D74452;
+    border-radius: 16px;
+    color: #F9F5E3;
+    text-decoration: none;
+    
+}
+
+
+/* PROJECT DESCRIPTION*/
+
+.projDescriptionTitle{
+    font-size: 2vw;
+}
+
+
+.projDescription{
+    width: 48%;
+    overflow: scroll;
+    margin: 1rem;
+}
+
+.projDescriptionTable{
+    text-align: left;
+    font-size: 17px; 
+    overflow: wrap;
+}
+
+.clickableRow th.rightText{
+    background-color: #E3B361;
+}
+
+.rightText{
+    font-size: 80%;
+}
+
+th, td {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+.numberOptionLeftDisplay{
+    text-align: center;
+    width: 2.5vw;
+    height: 2.55vw;
+    font-size: 1.5vw;
+    border-radius: 50%;
+    background-color: #596D4F;
+
+}
+
+.leftVisual{
+    margin-right: .75rem;
+}
+
+ul{
+    list-style: inside;
+}
+
+.hoverText:hover{
+    color:#D74452;
+    cursor: pointer;
+}
+
+.hoverNum:hover{
+
+    position: relative;
+    font-weight: bolder;
+    color: #596D4F;
+
+}
+
+/* HIGHLIGHTED TEXT WHEN CLICKED */
+.highlighted{
+    color: white;
+}
+
+/* SOLUTION AREA  */
+
+.solutionArea{
+    width: 48%;
+    background-color: white;
+    border-radius: 16px;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+    /* SOLUTION TITLE */
+
+    .titleArea{
+        background-color: #D74452;
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+        padding: 5px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .solutionAreaTitle{
+        margin: 10px;
+    }
+
+
+    .solutionOptions{
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 30%;
+        margin: 5px;
+        text-align: center;
+    }
+
+    /* Options 1 2 3 4 5 at top */
+    .functionNum{
+        cursor: pointer;
+    }
+
+    /* SOLUTION AREA */
+    .promptText{
+        color: purple;
+        margin: 5px;
+        visibility: hidden;
+        /*margin-bottom: .75rem;*/
+    }
+
+    .solutionPrompt{
+        color: black;
+        background-color: rgb(245, 244, 224);
+        border-radius: 16px;
+    }
+
+    .solution{
+        margin: .75rem;
+    }
+
+    .solutionAnswer{
+        margin: 5px;
+    }
+
+    #errorMsgBox{
+        background-color: red;
+        border-radius: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding-bottom: 10px;
+        margin-top: 10px;
+    }
+
+        #errorTxtTitle{
+            background-color: brown;
+            border-radius: 10px 10px 0px 0px;
+            padding: 10px;
+
+        }
+
+        .errorTxt{
+            padding: 0px 10px 0px 10px;
+        }
+
+        
+        /* DISPLAY STATES */
+        .displayState{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+
+    
+
+
+        
