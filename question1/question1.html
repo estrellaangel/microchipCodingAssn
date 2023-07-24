@@ -13,7 +13,7 @@
     <link rel='stylesheet' href='question1.css'>
 </head>
     <body>
-        <div class="boxForShadow">
+        <div class="allElements">
              <h1 class="title">Question 1</h1>
 
             <div class="main" onload="addToArray()">
@@ -87,32 +87,32 @@
                             </tr> 
                         </table>
                         <!-- Table End -->
-                        
+
                     </div>
                     <!-- Project Description End -->
 
                     <!-- Solution -->
                     <div class="solutionArea">
-                        <div class="topPart">
+                        <div class="solutionContent">
+
+                            <!-- Solution Bar -->
                             <div class="titleArea">
                                 <div class="solutionAreaTitle">Solution</div>
                                 <ul class="solutionOptions">
-                                    <!-- <li class="1 hoverNum functionNum" onclick="addToArray('addToArray')">1</li> -->
                                     <li class="1 hoverNum functionNum" onclick="displayAllStates()">1</li>
                                     <li class="2 hoverNum functionNum" onclick="findTwoWords()">2</li>
                                     <li class="3 hoverNum functionNum" onclick="nameLength()">3</li>
                                     <li class="4 hoverNum functionNum" onclick="alphabetizeStates()">4</li>
                                 </ul>
                             </div>
+                            <!-- Solution Bar End -->
 
+                            <!-- Solution Answer End-->
                             <div class="solution" id="solution" onload="clearSolution()">
-                                <!-- <div class="promptText" id="promptText" onload="hide(this.id)" >Prompt:</div> -->
-                                <!-- <div class="solutionPrompt" id="solutionPrompt"></div> -->
                                 <div class="solutionAnswer" id="solutionAnswer"></div>
                             </div>
+                             <!-- Solution Answer End -->
                         </div>
-                        
-
                     </div>
                 
                 </div>

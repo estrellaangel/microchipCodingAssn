@@ -4,47 +4,25 @@ var stateArray = [];
 //added used to ensure that elements are not added twice
 var added = false;
 
-//this function creates a div with given id, class, text set and appends to given parent node
+//helper function - this function creates a div with given id, class, text set and appends to given parent node
 function createDiv(id, cls, text, parentid){
+
+    //create new div 
     const newDiv = document.createElement("div");
-    newDiv.setAttribute('id', id);
-    newDiv.classList.add(cls);
+    newDiv.setAttribute('id', id); //set id attribute
+    newDiv.classList.add(cls); //add class
 
+    //create text node to append to newDiv
     const textNode = document.createTextNode(text);
-    newDiv.appendChild(textNode)
+    newDiv.appendChild(textNode);
 
+    //append div to parent element
     const parentElem = document.getElementById(parentid);
     parentElem.appendChild(newDiv);
-}
-
-
-//this function checks if array is empty and returns an error message
-function checkEmpty(){
-
-    if(stateArray.length == 0){
-        console.log("runs if");
-
-        //gets Error div
-        var errorMes = document.createElement("div");
-        errorMes.setAttribute('id', 'errorMsgBox');
-
-        //add the error message container to the solution answer area
-        const solutionAnswerArea = document.getElementById("solutionAnswer");
-        solutionAnswerArea.appendChild(errorMes);
-
-        //sets error message text to be input by making text node then setting that text val
-        createDiv("errorTxtTitle", "errorTxtTitle", "Error: Array is Empty", "errorMsgBox");
-        createDiv("errorTxtSolutionTitle", "errorTxt", "Solutions:", "errorMsgBox");
-        createDiv("errorTxtSol1", "errorTxt", "Click on '1' in top right search bar", "errorMsgBox");
-        createDiv("errorTxtSol2", "errorTxt", "Click on 'Add the following states as string types to an Array, List, or other collection in this order.' in Project Description", "errorMsgBox");
-
-    }
-
-    console.log("runs checkEmpty()");
 
 }
 
-//this function highlights the number and text that it is completing
+//helper funtion - this function highlights the number and text that it is completing
 function updateHighlight(idNum){
 
     //gets currently highlighted elements and deletes the highlighted class from them
@@ -57,6 +35,7 @@ function updateHighlight(idNum){
         for (var i = 0; i < currentHighlightedElems.length; i++) {
             currentHighlightedElems[i].classList.remove("highlighted");
         }
+
     }
     
     //gets elements with idNum and adds the highlighted class to them
@@ -64,14 +43,16 @@ function updateHighlight(idNum){
 
     //if there are elements with the given class name, add the highlighted class to each of them
     if (newHighlights.length > 0) {
+
         //loop through the collection and add highlighted class for each element
         for (var j = 0; j < newHighlights.length; j++) {
             newHighlights[j].classList.add("highlighted");
         }
+
     }
 }
 
-//this function clears the solution area, used when page is loaded and before every function
+//helper funtion - this function clears the solution area, used when page is loaded and before every function
 function clearSolution(){
 
     //clears all the content from inside the solution area
@@ -80,6 +61,7 @@ function clearSolution(){
 
 }
 
+//helper function - this function adds the given state name as a div with 'displayState' class and adds it to the solution answer area
 function displayState(state){
 
     //create a new div that will go in the solution answer area
@@ -87,7 +69,6 @@ function displayState(state){
 
     //adding id name so that it can be styled using css
     displayState.classList.add("displayState");
-
 
     //creating and adding in state name as text attribute
     const stateName = document.createTextNode(state);
@@ -99,7 +80,8 @@ function displayState(state){
 
 }
 
-function displayAllStates(){
+//helper function - updates all information to display and start executing functions
+function restartDisplay(highlightedID){
 
     //adds elements to array if already added it does nothing
     addToArray();
@@ -108,16 +90,11 @@ function displayAllStates(){
     clearSolution();
 
     //update new highlights (this is option 1)
-    updateHighlight(1);
-
-    //checks if array is empty
-    checkEmpty();
-
-    //displays each state
-    stateArray.forEach(displayState);
+    updateHighlight(highlightedID);
 }
 
-//this function adds the elements to the array
+
+//ADDING FUNCTION - this function adds the elements to the array
 function addToArray() {
 
     //checks if elements have already been added if they havent then it adds them if they have then it doesnt add them
@@ -140,19 +117,21 @@ function addToArray() {
 
 }
 
+//(1) FUNCTION = displays all the states in the array
+function displayAllStates(){
+
+    //restartsDisplay and makes sure array is full, updates highlight to 1
+    restartDisplay(1);
+
+    //displays each state
+    stateArray.forEach(displayState);
+}
+
+//(2) FUNCTION = finds all states that are 2 words
 function findTwoWords(){
 
-    //adds elements to array if already added it does nothing
-    addToArray();
-
-    //updatePrompt(id);
-    clearSolution();
-
-    //update new highlights (this is option 2)
-    updateHighlight(2);
-
-    //checks if array is empty
-    checkEmpty();
+    //restartsDisplay and makes sure array is full, updates highlight to 2
+    restartDisplay(2);
 
     //goes through each element in array and splits it up by a space. This splits it up into an array of words, if the array length is 2 (2 words) then display it, else do nothing.
     for(i in stateArray){
@@ -166,79 +145,43 @@ function findTwoWords(){
         }
     }
 
-
 }
 
 function nameLength(){
 
-    //adds elements to array if already added it does nothing
-    addToArray();
-    
-    //updatePrompt(id);
-    clearSolution()
-
-    //update new highlights (this is option 3)
-    updateHighlight(3);
-
-    //checks if array is empty
-    checkEmpty();
+    //restartsDisplay and makes sure array is full, updates highlight to 3
+    restartDisplay(3);
 
     for(i in stateArray){
 
-        //create new element for state 
-        var newState = document.createElement("div");
+        //create new state element that is stored in solution answer area no text 
+        createDiv("stateNameNLength" + i + "", "displayState", "", "solutionAnswer");
 
-        //create a div that stores the text
-        const stateName = document.createElement("div");
-        const stateText = document.createTextNode(stateArray[i]);
-        stateName.appendChild(stateText);
+        //create div with state name only in it
+        createDiv("stateName", "stateName", stateArray[i], "stateNameNLength" + i + "");
 
-        //appened text element to new div 
-        newState.appendChild(stateName);
-
-        //solves for word count
+        //solve for word count
         var count = stateArray[i].split("").length;
 
-        //create a div that stores the text
-        const stateCount = document.createElement("div");
-        const countText = document.createTextNode(count);
-        stateCount.appendChild(countText);
-
-        //append text element to new div
-        newState.appendChild(stateCount);
+        //create div with word count 
+        createDiv("stateLength", "stateLength", count, "stateNameNLength" + i + "");
         
-        //set its id to display state
-        newState.classList.add("displayState");
-
-        //add to solution area
-        var solutionArea = document.getElementById("solutionAnswer");
-        solutionArea.appendChild(newState);
     }
-
 
 }
 
 function alphabetizeStates(){
 
-    //adds elements to array if already added it does nothing
-    addToArray();
-    
-    //updatePrompt();
-    clearSolution();
-
-    //update new highlights (this is option 5)
-    updateHighlight(4);
-
-    //checks if array is empty
-    checkEmpty();
+    //restartsDisplay and makes sure array is full, updates highlight to 4
+    restartDisplay(4);
 
     //sorts the array alphabetically
     stateArray.sort();
 
-        //side note: this is the easiest way to sort because js already has a sorting
-        //function but if I needed to create one I would go through the array and find
-        //the element's Unicode codepoint for the first letter then sort it using a sorting
-        //algorithm like insertion sort (I code in a more effiecient algorithm like merge 
+        //side note: This is the easiest way to sort because js already has a sorting
+        //function but if I needed to create one I would go through the array and make all of the words lowercase
+        //then I would find the element's Unicode codepoint value for the first letter then sort it using a 
+        //comparing sorting algorithm like insertion sort (I'd code in a more effiecient algorithm like merge 
         //sort if there was more data) if 2 elements have the same first letter the code
         //would go through and check each letter until one is decided to be greater than
         //and it would sort it accordingly.
@@ -247,13 +190,4 @@ function alphabetizeStates(){
     stateArray.forEach(displayState);
 
 }
-    
-
-
-// printStateNames">Print each state name to screen.</div>
-//                     <div class="findTwoWords highlightText" id="findTwoWords">Using programming logic, print each state name that is two words.</div>
-//                     <div class="nameLength highlightText" id="nameLength">Using programming logic, print the length of each string to the screen (e.g. Alaska is 6 and Ohio is 4).</div>
-//                     <div class="alphabetizeStates highlightText" id="alphabetizeStates
-
-
 
